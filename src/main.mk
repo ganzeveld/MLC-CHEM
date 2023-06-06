@@ -1,5 +1,5 @@
 ### name of the executable that will be produced
-PROG       = emdep_xtsurf.exe
+PROG       = ../emdep_xtsurf.exe
 
 # complete list of all f90 source files (alphabetic order)
 SRCS0 =	$(wildcard *.f90)
