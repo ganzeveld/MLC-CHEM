@@ -1,0 +1,64 @@
+! -*- f90 -*-
+
+&CTRL
+ casename   = 'example_run', ! using the example run input file
+ l_emis     = T,    ! switch for using emissions
+ l_drydep   = T,    ! switch for considering dry depostion 
+ l_xtsurf   = T,    ! switch for exchange simulations
+ ndtgstart  = 2010062900,
+ ntimestep  = 48,   ! number of timesteps
+ dtimestep  = 1800., ! length of timestep [s]
+ nwrite     = 1,    ! output frequency
+ zlatitude  = 1.,   ! latitude (for radiation calculations) [degrees]
+ zlongitude = -65., ! longitude (needed to getting MEGAN emission factors [degrees]
+ zslf       = 1.,   ! surface land fraction [0-1]
+ zvegfrac   = 1.,   ! vegetation fraction [0-1]
+ zforestfr  = 1.,   ! forest fraction [0-1]
+ zalbedo    = 0.12, ! surface albedo [0-1]
+ zlai       = 5.0,  ! Leaf Area Index [m2 m-2]
+ zcanheight = 35.,  ! Canopy height [m]
+ zrheightsl = 81.,  ! reference height surface layer
+ zMLHmax    = 1500, ! Maximum mixed layer height
+ zroughness = 3.,   ! Roughness length for momentum [m]
+ ziladprof  = 2,    ! Leaf Area Density profile (1=uniform, 2=top profile) 
+ zqm1       = 0.012,! surface layer moisture [g H2O g-1 air]
+ zws        = 0.5,  ! Soil moisture [m]
+ zwsmax     = 0.5,  ! Field capacity [m]
+ zprc       = 0.,   ! convective precipitation [m]
+ zprl       = 0.,   ! large-scale precipitation [m]
+ l_wetskinRH= T,    ! wet skin fraction calculated from RH
+ zwetskin   = 0.,   ! fraction of wetted surface [0-1]
+ l_fvpd     = T,    ! ESS_lg_20130424+ switch for water vapor pressure deficit impact
+/
+&CTRL_EMIS
+ l_emis_bio_NO     = T,    ! switch for biogenic NO emissions
+ l_emis_bio_VOC    = T,    ! switch for biogenic VOC emissions
+ l_emis_bio_VOC_MEGAN = T, ! ESS_lg_20130817+ added switch to use MEGAN model
+ l_emis_bio_jNO3   = F,    ! switch for foliage NOx/HONO emissions (nitrate photolysis)     
+ l_emis_bio_NO_pls = F,    ! switch for considering pulsing in soil NO emissions
+ lcrfyl95          = F,    ! switch for using Yienger and Levy 1995 canopy reduction factor
+ iNOemclass        = 11,   ! soil NO emission class (see messy_emdep_xtsurf_box.f90 for class names)
+ zisopemfact       = 16.,  ! isoprene emission factor [ug C g-1 hr-1]
+ zmonoemfact       = 0.4,  ! monoterpene emission factor [ug C g-1 hr-1]
+ zovocemfact       = 0.2,  ! Other VOCs emission factor [ug C g-1 hr-1]
+ zfAPIN            = 0.45, ! fraction of monoterpene emission flux emitted as alpha-pinene
+ zfBPIN            = 0.45, ! fraction of monoterpene emission flux emitted as beta-pinene
+ zfSQTERP          = 0.1,  ! sesquiterpene emissions relative to total monoterpene emission flux
+ zradonemis        = 0.3e4,! radon emission flux [atoms m-2 s-1]
+ zco2emis          = 3.3e-6,! CO2 emission flux [mol CO2 m-2 s-1]
+ znh3emis          = 1.e-9,! NH3 soil emission flux [mol N/NH3) m-2 s-1]
+/
+&CTRL_XTSURF
+ l_xtsurf_veg_mlay       = T, ! switch for using explicit canopy exchanges model
+ l_xtsurf_veg_mlay_ccomp = F, ! switch for using compensation points
+ l_xtsurf_veg_mlay_chem  = T, ! switch for considering gas-phase chemistry scheme with 62 tracers
+ l_xtsurf_veg_mlay_chem_reactions = T, ! switch for considering gas-phase rea ctions and photolysis
+ l_xtsurf_veg_mlay_chem_photolysis = T, ! switch for photolysis
+ l_xtsurf_AGS            = T, ! switch for using the AGS model to calculate the stomatal resistance considering CO2
+ Agstype                 = 1, ! Ags vegetation type, C3; Agstype=1, C4; Agstype=2, coniferous forest; Agstype=3, tropical forest; Agstype=4
+ l_readdata              = T, ! switch for reading input data (observations) 
+ infilename              = 'input/example_obs.inp', ! dir/name of file with obs.
+ weight_pxtm1_obs        = 0.5, ! weight of observed concentrations in determining surface layer conc. 
+ nveglay                 = 2, ! number of canopy layers for exchange calc. being used (equidistant!, <=nveglay_hr)
+ nveglay_hr              = 4, ! number of canopy layers for high-resolution calc. (radiation, VOC emis., etc)
+ /
