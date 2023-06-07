@@ -2,7 +2,7 @@
 Repository of the Multi-Layer Canopy - CHemistry and Exchange Modelling system (=MLC-CHEM). 
 
 Developed by Laurens Ganzeveld and many contributing users of the modelling system to study atmosphere-biosphere exchange of reactive compounds and aerosols. 
-* The model system is especially developed to support analysis of field observations. In a so-called offline set-up the model is driven by first-order estimates of drivers such as radition, wind speed, temperatures, moisture, LAI and roughness or driven by read-in, measured micrometeorological and surface cover parameters and surface/mixed layer tracer concentrations,  
+* The model system is especially developed to support analysis of field observations. In a so-called offline set-up the model is driven by first-order estimates of drivers such as radition, wind speed, temperatures, moisture, LAI and roughness, or driven by read-in measured micrometeorological and surface cover parameters and surface/mixed layer tracer concentrations  
 * MLC-CHEM can be run both on windows and linux systems, with simulations spanning from some days to multiple years
 * One can compare simulated and observed trace gas fluxes and in-canopy concentration gradients as a function of the coupled representation of in-canopy biogenic emissions, dry deposition, chemistry and turbulent transport 
 * The role of these canopy processes can also be evaluated by interpretation of process tendencies and by conducting sensitivity experiments (de)activating/modifying these processes 
